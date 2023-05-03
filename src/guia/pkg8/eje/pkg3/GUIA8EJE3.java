@@ -37,32 +37,36 @@ public class GUIA8EJE3 {
         System.out.println("Es mayor de edad: " + ps.esMayorDeEdad(persona1));
         boolean pers1 = ps.esMayorDeEdad(persona1);
         System.out.println("El IMC de: " + persona1.getNombre() + " es: " + ps.calcularIMC(persona1));
+        int pers1IMC = ps.calcularIMC(persona1);
 
         //Persona persona2 = ps.crearPersona();
         Persona persona2 = new Persona("Noelia", 12, "f", 89, 1.50);
         System.out.println("Es mayor de edad: " + ps.esMayorDeEdad(persona2));
         boolean pers2 = ps.esMayorDeEdad(persona2);
         System.out.println("El IMC de: " + persona2.getNombre() + " es: " + ps.calcularIMC(persona2));
+        int pers2IMC = ps.calcularIMC(persona2);
 
         //Persona persona3 = ps.crearPersona();
         Persona persona3 = new Persona("Sebastian", 23, "M", 99, 1.90);
         System.out.println("Es mayor de edad: " + ps.esMayorDeEdad(persona3));
         boolean pers3 = ps.esMayorDeEdad(persona3);
         System.out.println("El IMC de: " + persona3.getNombre() + " es: " + ps.calcularIMC(persona3));
+        int pers3IMC = ps.calcularIMC(persona3);
 
         //Persona persona4 = ps.crearPersona();
         Persona persona4 = new Persona("Ivan", 7, "M", 45, 1.30);
         System.out.println("Es mayor de edad: " + ps.esMayorDeEdad(persona4));
         boolean pers4 = ps.esMayorDeEdad(persona4);
         System.out.println("El IMC de: " + persona4.getNombre() + " es: " + ps.calcularIMC(persona4));
+        int pers4IMC = ps.calcularIMC(persona4);
 
         boolean[] edades = {pers1, pers2, pers3, pers4};
+        int[] porcIMC = {pers1IMC,pers2IMC,pers3IMC,pers4IMC};
 
         double mayor = 0;
         double menor = 0;
         int i;
         for (i = 0; i < edades.length; i++) {
-            System.out.println(edades[i]);
             if ((edades[i]) == true) {
                 mayor++;
             } else {
@@ -70,11 +74,22 @@ public class GUIA8EJE3 {
             }
 
         }
-        System.out.println(mayor);
-        System.out.println(menor);
-        System.out.println(i);
         System.out.println("porcentaje Mayor de edad: " + (mayor / edades.length) * 100+"%");
         System.out.println("porcentaje Menor de edad: " + (menor / edades.length) * 100+"%");
-    }
+    
 
+        double supPeso = 0;
+        double enPeso = 0;
+        double sobrePeso =0;
+        for (i = 0; i < porcIMC.length; i++) {
+            if ((porcIMC[i]) == -1) {
+                supPeso++;
+            } else if (porcIMC[i]==0) {
+                enPeso++;
+            } else sobrePeso++;
+        }
+        System.out.println("porcentaje IMC bajo de peso: " + (supPeso / porcIMC.length) * 100+"%");
+        System.out.println("porcentaje IMC en peso ideal: " + (enPeso / porcIMC.length) * 100+"%");
+        System.out.println("porcentaje IMC con sobrepeso: " + (sobrePeso / porcIMC.length) * 100+"%");
+    }
 }
